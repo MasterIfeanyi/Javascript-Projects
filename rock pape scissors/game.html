@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors GamePlay</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      .container {
+        background-color: rgb(165, 99, 0);
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        padding: 20px;
+      }
+      button {
+        border-radius: 10px;
+        padding: 20px 50px;
+        margin: 20px;
+        cursor: pointer;
+        background-color: rgb(245, 210, 11);
+        color: white;
+      }
+      .progress-bar-outer {
+        width: 30%;
+        background-color: white;
+        height: 20px;
+        margin-top: 20px;
+        border-radius: 20px;
+      }
+      .progress-bar-inner {
+        height: 100%;
+        width: 0%;
+        background-color: green;
+        transition: width 1s;
+        border-radius: 20px;
+      }
+      img {
+        width: 550px;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        transition: transform 0.3s;
+      }
+
+      img:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Add the image here -->
+      <img src="game.png" alt="Rock Paper Scissors Game" />
+
+      <button id="playBtn">Play Game</button>
+
+      <!-- Progress bar should come after the button -->
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner"></div>
+      </div>
+    </div>
+
+    <script>
+      const progressBarInner = document.querySelector(".progress-bar-inner");
+      const playBtn = document.getElementById("playBtn");
+
+      const playGame = async () => {
+        let width = 0;
+        progressBarInner.style.width = `${width}%`; // Reset progress bar
+
+        // Simulate progress bar loading
+        const intervalId = setInterval(() => {
+          width += 30;
+          progressBarInner.style.width = `${width}%`;
+
+          if (width >= 100) {
+            clearInterval(intervalId);
+            // After the progress bar reaches 100%, navigate to the new page
+            window.location.href = "../index.html";
+          }
+        }, 1000);
+
+        // Optional: You can simulate other actions if needed here
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate a delay
+      };
+
+      // Event listener to trigger playGame when the button is clicked
+      playBtn.addEventListener("click", playGame);
+    </script>
+  </body>
+</html>

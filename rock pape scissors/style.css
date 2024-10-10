@@ -1,0 +1,55 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: rgb(243, 172, 84);
+  text-align: center;
+}
+
+.container {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 90px;
+  border-radius: 5px;
+  background-color: azure;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #ccc;
+}
+
+.choices button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+#user-choice,
+#computer-choice {
+  width: 40px;
+  height: 40px;
+  margin-left: 150px;
+  display: flex;
+}
+
+.progress-bar-inner {
+  width: 0%;
+  height: 100px;
+  background-color: green;
+  transition: width 1s linear;
+}
+
+.loading-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 40px;
+  margin: auto;
+}
