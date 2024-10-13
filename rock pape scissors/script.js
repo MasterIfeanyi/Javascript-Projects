@@ -7,6 +7,12 @@ const computerScoreDisplay = document.getElementById("computer-score");
 const userChoiceDisplay = document.getElementById("user-choice");
 const computerChoiceDisplay = document.getElementById("computer-choice");
 
+function announceResult(message) {
+  const speech = new SpeechSynthesisUtterance(message);
+  speech.lang = "en-US";
+  window.speechSynthesis.speak(speech);
+}
+
 //  const computerScoreDisplay = document.getElementById("computer-score");
 //Function to get computer choice
 
@@ -20,6 +26,7 @@ function computerChoice() {
 
 function determineWinner(userChoice, compChoice) {
   if (userChoice === compChoice) {
+    announceResult("draw");
     return "its a draw! ";
   } else if (
     (userChoice === "rock" && compChoice === "scissors") ||
@@ -27,9 +34,11 @@ function determineWinner(userChoice, compChoice) {
     (userChoice === "scissors" && compChoice === "paper")
   ) {
     userScore++;
+    announceResult(`You win! Your Score is ${userScore}`);
     return "You win!";
   } else {
     computerScore++;
+    announceResult(`You lose`);
     return "You lose!";
   }
 }
